@@ -1,0 +1,2 @@
+class ConceptualCategoriesController < ApplicationController
+end

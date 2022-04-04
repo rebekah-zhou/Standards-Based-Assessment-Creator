@@ -1,25 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState } from 'react'
+
+const apiKey = 'c65q1ouruwNQ8XXAmuLFY1mG'
 
 function App() {
+  const [standards, setStandards] = useState({})
+
+  useEffect(() => {
+    fetch(`https://commonstandardsproject.com/api/v1/standard_sets/180878796A3C448D808F38BCCCFD26CF_D2744619_grades-09-10-11-12?api-key=c65q1ouruwNQ8XXAmuLFY1mG`)
+    .then(r => r.json())
+    .then(data => setStandards(data))
+    .catch((error) => {
+      console.error('Error:', error)
+    })
+  }, [])
+
+  // {
+  //   headers: {
+  //     'Access-Control-Allow-Origin': 'http://localhost:4000'
+  //   }
+  // }
+  // {
+  //   headers: {
+  //     'Api-Key': apiKey
+  //   }
+  // }
+
+  console.log(standards)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Hello
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
